@@ -1,0 +1,145 @@
+For Hotel
+xpath- //*[@id="myTopnav"]/div[1]/ul/li[2]/a
+
+package Utility;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+public class Utils_Config {
+	public Utils_Config() {
+		
+	}
+public static String configclass1(String parameter) throws IOException {
+	try {
+	Properties prop=new Properties();
+	
+		FileInputStream input=new FileInputStream("D:\\ABHIGroupFramework\\FirstAPIProject\\src\\config.properties");
+		prop.load(input);
+		String param=prop.getProperty(parameter);
+		return param;
+	} catch (FileNotFoundException e) {
+		e.printStackTrace();
+	}catch (IOException e) {
+		e.printStackTrace();
+	}
+	return null;
+
+
+
+
+
+
+public class MoneyControlPage extends TestBase {
+	WebDriver driver;
+	public static void openMoneyControl() throws IOException, InterruptedException {
+		String cd=Utils_Config.configclass1("chromedriver");
+		System.setProperty("webdriver.chrome.driver",cd);
+		WebDriver driver=new ChromeDriver();
+		driver.navigate().to("https://www.moneycontrol.com/");
+		driver.manage().window().maximize();
+		Thread.sleep(5000);
+		driver.close();
+		
+		
+	}
+
+
+
+package com.aqm;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+public class Easemytrip {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		WebDriver driver;
+		WebDriverWait wait;
+		System.setProperty("webdriver.chrome.driver","D:\\prashant\\driver\\chrome_103\\chromedriver.exe");
+		driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("https://www.easemytrip.com/");
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		wait=new WebDriverWait(driver,Duration.ofSeconds(30));
+		driver.findElement(By.xpath("//*[@id=\"myTopnav\"]/div[1]/ul/li[2]/a")).click();
+		driver.findElement(By.xpath("//div[@class='htl_location']")).click();
+		driver.findElement(By.xpath("//input[@id='txtCity']")).sendKeys("Goa");
+		driver.findElement(By.xpath("(//li[contains(@id,'ui-id-')])[1]")).click();
+		driver.findElement(By.xpath("//span[@id='txtcid']")).sendKeys("20");
+		//driver.findElement(By.xpath("//span[@id='txtcimy']")).sendKeys("august");
+		
+		driver.findElement(By.xpath("//div[@class='hp_inputBox searchButon']")).click();
+		//driver.findElement(By.xpath("//input[@id=\"txtCity\"]")).clear();
+		
+//		WebElement departure=driver.findElement(By.xpath("//input[@id='FromSector_show']"));
+//		departure.clear();
+//		departure.sendKeys("mumbai");
+//		
+		
+//		driver.findElement(By.xpath("//input[@id='txtCity']"))
+		
+		
+//		Thread.sleep(2000);
+//		
+//		driver.findElement(By.xpath("(//div[contains(@id,'ui-id-')])[1]")).click();   
+//		
+//		WebElement destination=driver.findElement(By.xpath("//input[@id=\"Editbox13_show\"]"));
+//		destination.clear();
+//		destination.sendKeys("Kolkata");
+//		
+//		Thread.sleep(2000);
+//		
+//		driver.findElement(By.xpath("(//div[contains(@id,'ui-id-')])[3]")).click();
+//		
+//			/*Actions ac=new Actions(driver);
+//			ac.keyDown(Keys.TAB).keyUp(Keys.TAB).build().perform();*/
+//		
+//		/*WebElement datetab=driver.findElement(By.xpath("//input[@id=\"ddate\"]"));
+//    	datetab.clear();
+//		datetab.sendKeys("27/08/2022");*/
+//		
+//		Thread.sleep(3000);
+//		
+//    	String date1="27/08/2022";
+//    	WebElement date=driver.findElement(By.xpath("//span[@id='"+date1+"']"));
+//    	date.click();
+//    	
+//    	Thread.sleep(3000);
+//    	
+//    	WebElement search=driver.findElement(By.xpath("//input[@onclick=\"SearchFlightWithArmy();\"]"));
+		
+		
+		//     (//span[contains(text(),'August')]//following::a[contains(text(),'16')])[1]
+		
+//    	search.click();
+//		
+		
+				
+
+		Thread.sleep(3000);
+		
+		//driver.quit();
+		
+	
+		
+		
+		
+
+	}
+
+}
